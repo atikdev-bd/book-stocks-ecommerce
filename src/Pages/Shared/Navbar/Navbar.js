@@ -7,7 +7,7 @@ const Navbar = () => {
       <div className="flex-1">
         <Link to="/home" > <img src={""} alt="" /></Link>
         <Link to="/home" className="btn btn-ghost normal-case">
-        <span className="text-4xl font-bold">WIFI</span><span className="text-xl">House </span>
+        <span className="text-4xl font-bold">B</span><span className="text-xl"> -Stock</span>
         </Link>
       </div>
       <div className="link-div mr-28  font-bold hidden lg:block">
