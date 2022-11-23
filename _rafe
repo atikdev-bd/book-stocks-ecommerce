@@ -1,0 +1,25 @@
+
+[
+  {
+    "id": "01",
+    "img": "https://i.ibb.co/f2C25QP/img-2.jpg",
+    "name": "Literature"
+  },
+ 
+    {
+        "id": "02",
+        "img": "https://i.ibb.co/rGCgJXk/img-1.jpg",
+        "name": "Poem"
+      },
+  
+    {
+      "id": "03",
+      "img": "https://i.ibb.co/vcSv4rX/img-3.jpg",
+      "name": "Religious"
+    },
+    {
+      "id": "04",
+      "img": "https://i.ibb.co/2SmkNJN/img-4.jpg",
+      "name": "Thriller"
+    }
+  ]
