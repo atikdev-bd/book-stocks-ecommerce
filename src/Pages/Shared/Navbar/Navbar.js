@@ -16,7 +16,7 @@ const Navbar = () => {
             {" "}
             <div className="flex">
               <div>
-                <Link to="/home" className="mr-3">
+                <Link to="/" className="mr-3">
                   Home
                 </Link>
                 <Link to="/addService" className="mr-3 hover:text-cyan-900">
@@ -37,7 +37,7 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <Link to="/home" className="mr-3">
+            <Link to="/" className="mr-3">
               Home
             </Link>
             <Link to="/addService" className="mr-3 hover:text-cyan-400">
@@ -83,7 +83,7 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/home" className="mr-3">
+                    <Link to="/" className="mr-3">
                       Home
                     </Link>
                   </li>
@@ -103,7 +103,7 @@ const Navbar = () => {
                 <>
                   <li>
                     {" "}
-                    <Link to="/home" className="mr-3">
+                    <Link to="/" className="mr-3">
                       Home
                     </Link>
                   </li>
