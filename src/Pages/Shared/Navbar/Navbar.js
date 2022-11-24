@@ -50,7 +50,7 @@ const Navbar = () => {
             <Link to="/login" className="mr-3 hover:text-sky-700">
               Login
             </Link>
-            <Link to="register" className="mr-3 hover:text-green-500">
+            <Link to="/register" className="mr-3 hover:text-green-500">
               Register
             </Link>
           </>
@@ -109,7 +109,7 @@ const Navbar = () => {
                   </li>
                   <li>
                     {" "}
-                    <Link to="register" className="mr-3 hover:text-green-500">
+                    <Link to="/register" className="mr-3 hover:text-green-500">
                       Register
                     </Link>
                   </li>
