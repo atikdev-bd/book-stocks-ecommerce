@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ConfirmationModal from "../CofirmationModal/ConfirmationModal";
+
 import AllBook from "./AllBook";
 
 const AllBooks = () => {
@@ -17,11 +19,14 @@ const AllBooks = () => {
   }, [id]);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mx-8">
-      {categoryBook?.map((book) => (
-        <AllBook key={book._id} book={book}></AllBook>
-      ))}
-    </div>
+    <>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mx-8">
+        {categoryBook?.map((book) => (
+          <AllBook key={book._id} book={book}></AllBook>
+        ))}
+      </div>
+      <ConfirmationModal></ConfirmationModal>
+    </>
   );
 };
 

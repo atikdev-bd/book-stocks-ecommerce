@@ -1,4 +1,5 @@
 import React from "react";
+import BookCategories from "../BookCategories/BookCategories";
 
 const AllBook = ({ book }) => {
   const { name, img, resalePrice, originalPrice, useTime, sellerName,location } = book;
@@ -24,7 +25,7 @@ const AllBook = ({ book }) => {
           <div className="card-actions justify-end">
             
 
-            <button className="btn btn-primary">Buy now</button>
+            <label  htmlFor="my-modal"  className="btn btn-primary">Buy now</label>
           </div>
         </div>
       </div>
