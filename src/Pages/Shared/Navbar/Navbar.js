@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { FaSignOutAlt} from 'react-icons/fa';
+import ProfileIcon from '../../../Assets/icons/icons8-account-64.png'
+import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
 const Navbar = () => {
+
+  const {user,logOut} = useContext(AuthContext)
+  console.log(user.photoURL);
     return (
         <div className="navbar">
       <div className="flex-1">
@@ -11,7 +17,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="link-div mr-28  font-bold hidden lg:block">
-        {""?.uid ? (
+        {user?.uid ? (
           <>
             {" "}
             <div className="flex">
@@ -23,16 +29,16 @@ const Navbar = () => {
                   Add Service
                 </Link>
                 <Link to='/blogs' className="mr-3 hover:text-blue-900">Blogs</Link>
-                <Link to="/review" className="mr-3 hover:text-yellow-700">
-                  My Review
+                <Link to="/dashboard" className="mr-3 hover:text-yellow-700">
+                  Dashboard
                 </Link>
               </div>
-              {/* <div className="ml-4 mt-1">
+              <div className="ml-36 mt-1">
                 <FaSignOutAlt
-                  onClick={""}
+                  onClick={logOut}
                   className="hover:text-stone-400"
                 ></FaSignOutAlt>
-              </div> */}
+              </div>
             </div>
           </>
         ) : (
@@ -44,8 +50,8 @@ const Navbar = () => {
               Add Service
             </Link>
             <Link className="mr-3 hover:text-blue-900">Blogs</Link>
-            <Link to="/review" className="mr-3 hover:text-yellow-700">
-              My Review
+            <Link to="/dashboard" className="mr-3 hover:text-yellow-700">
+              Dashboard
             </Link>
             <Link to="/login" className="mr-3 hover:text-sky-700">
               Login
@@ -61,10 +67,10 @@ const Navbar = () => {
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              {""?.photoURL ? (
-                <img src={""} alt="" />
+              {user?.photoURL ? (
+                <img src={user?.photoURL} alt="" />
               ) : (
-                <img src={""} alt="" />
+                <img src={ProfileIcon} alt="" />
               )}
             </div>
           </label>
@@ -73,7 +79,7 @@ const Navbar = () => {
             className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
           >
             <div className="lg:hidden block">
-              { ""?.uid ? (
+              { user?.uid ? (
                 <>
                   {" "}
                   <li>
@@ -96,7 +102,7 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link onClick={""}>Logout</Link>
+                    <Link onClick={logOut}>Logout</Link>
                   </li>
                 </>
               ) : (

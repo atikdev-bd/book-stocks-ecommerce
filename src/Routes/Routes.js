@@ -1,10 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
+import DashBoardLayout from "../Layout/DashBoardLayout";
 import Main from "../Layout/Main";
 import AllBooks from "../Pages/Home/AllBooks/AllBooks";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Home/Login/Login";
 import Register from "../Pages/Home/Register/Register";
 import ErrorElement from "../Pages/Shared/ErrorElement/ErrorElement";
+import PrivetRoute from "../PrivetRoute/PrivetRoute";
 
 export const router = createBrowserRouter([
     {
@@ -30,5 +32,21 @@ export const router = createBrowserRouter([
                 element : <Register></Register>
             },
         ]
-    }
+    },
+    {
+        path: "/dashboard",
+        element: (
+          <PrivetRoute>
+           <DashBoardLayout></DashBoardLayout>
+          </PrivetRoute>
+        ),
+        errorElement: <ErrorElement></ErrorElement>,
+        children: [
+          {
+            path: "/dashboard",
+            element: ""
+          },
+         
+        ],
+      },
 ])
