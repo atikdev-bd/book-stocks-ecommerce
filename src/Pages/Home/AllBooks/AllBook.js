@@ -2,7 +2,6 @@ import React from "react";
 
 
 const AllBook = ({ book , setBookInfo}) => {
-  console.log(book)
   const { name, img, resalePrice, originalPrice, useTime, sellerName,location } = book;
   return (
     <div>
