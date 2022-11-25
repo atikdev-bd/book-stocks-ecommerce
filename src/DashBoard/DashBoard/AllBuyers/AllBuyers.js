@@ -1,9 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import toast, { Toaster } from "react-hot-toast";
 import Loader from "../../../Pages/Shared/Loader/Loader";
 
 const AllBuyers = () => {
-  const { data: buyers = [], isLoading } = useQuery({
+  const {
+    data: buyers = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["buyers"],
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/buyers");
@@ -11,6 +16,22 @@ const AllBuyers = () => {
       return data;
     },
   });
+
+  const handleDelete = (id) => {
+    console.log(id);
+
+    fetch(`http://localhost:5000/buyers/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged === true){
+            toast.success('delete successfully')
+        }
+         refetch();
+        console.log(data);
+      });
+  };
 
   if (isLoading) {
     return <Loader></Loader>;
@@ -34,11 +55,19 @@ const AllBuyers = () => {
               <td>{buyer?.name}</td>
               <td>{buyer?.email}</td>
               <td>{buyer?.role}</td>
-              <td>Blue</td>
+              <td>
+                <button
+                  onClick={() => handleDelete(buyer._id)}
+                  className="btn btn-xs btn-warning"
+                >
+                  Delete
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <Toaster></Toaster>
     </div>
   );
 };

@@ -80,7 +80,7 @@ const MyProducts = () => {
               </td>
               <td>
                 {
-                    book?.IsAdvertise ?  <button
+                    !book?.isAdvertise ?  <button
                     onClick={() => handleAdvertise(book?._id)}
                     className="btn btn-sm btn-accent"
                   >

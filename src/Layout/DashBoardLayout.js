@@ -2,16 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider/AuthProvider";
+import Loader from "../Pages/Shared/Loader/Loader";
 import Navbar from "../Pages/Shared/Navbar/Navbar";
 
 const DashBoardLayout = () => {
-  const { user } = useContext(AuthContext);
+  const { user , loading } = useContext(AuthContext);
  
   const [userInfo, setUserInfo] = useState([]);
 
   const info = userInfo[0];
 
-  const { data: users = [] } = useQuery({
+  const { data: users = [], isLoading } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await fetch(
@@ -22,7 +23,9 @@ const DashBoardLayout = () => {
       return data;
     },
   });
-
+if(isLoading || loading || !users){
+  return <Loader></Loader>
+}
   return (
     <div>
       <Navbar></Navbar>

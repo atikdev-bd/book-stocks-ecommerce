@@ -22,11 +22,13 @@ const AuthProvider = ({ children }) => {
   const provider = new GoogleAuthProvider();
   ///create user with email and password ///
   const createUser = (email, password) => {
+    setLoading(true)
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   //// login with email and password ///
   const emailAndPasswordLogin = (email, password) => {
+    setLoading(true)
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -35,17 +37,20 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setLoading(false)
     });
     return () => unsubscribe();
   }, []);
 
   ///google login///
   const googleLogin = () => {
+    setLoading(true)
     return signInWithPopup(auth, provider);
   };
 
   /// update user profile name ///
   const updateUser = (userInfo) => {
+    setLoading(true)
     return updateProfile(auth.currentUser, userInfo);
   };
 

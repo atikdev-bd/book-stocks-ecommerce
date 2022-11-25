@@ -36,6 +36,7 @@ const AddProducts = () => {
             resalePrice: ` $${data.price}`,
             categoryId: data.categoryId,
             location: data.location,
+            isAdvertise : false,
             img: img,
           };
       
