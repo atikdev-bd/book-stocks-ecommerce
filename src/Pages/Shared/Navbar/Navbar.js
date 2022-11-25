@@ -1,35 +1,44 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { FaSignOutAlt} from 'react-icons/fa';
-import ProfileIcon from '../../../Assets/icons/icons8-account-64.png'
-import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
+import React, { useContext } from "react";
+import { FaSignOutAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import ProfileIcon from "../../../Assets/icons/icons8-account-64.png";
+import TitleIcon from "../../../Assets/icons/icons8-literature-100.png";
+import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
+import './Navbar.css'
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
 
-  const {user,logOut} = useContext(AuthContext)
-
-    return (
-        <div className="navbar">
+  return (
+    <div className="navbar">
       <div className="flex-1">
-      <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </label>
-        <Link to="/home" > <img src={""} alt="" /></Link>
-        <Link to="/home" className="btn btn-ghost normal-case">
-        <span className="text-4xl font-bold">B</span><span className="text-xl"> -Stock</span>
+        <label
+          htmlFor="dashboard-drawer"
+          tabIndex={2}
+          className="btn btn-ghost lg:hidden"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h8m-8 6h16"
+            />
+          </svg>
+        </label>
+        <Link to="/">
+          {" "}
+          <img className="w-14 title-icon" src={TitleIcon} alt="" />
+        </Link>
+        <Link to="/" className="flex items-center ml-4 hover:text-green-600">
+          <span className="text-4xl font-bold">B</span>
+          <span className="text-xl"> -Stock</span>
         </Link>
       </div>
       <div className="link-div mr-28  font-bold hidden lg:block">
@@ -41,10 +50,9 @@ const Navbar = () => {
                 <Link to="/" className="mr-3">
                   Home
                 </Link>
-                <Link to="/addService" className="mr-3 hover:text-cyan-900">
-                  Add Service
+                <Link to="/blogs" className="mr-3 hover:text-blue-900">
+                  Blogs
                 </Link>
-                <Link to='/blogs' className="mr-3 hover:text-blue-900">Blogs</Link>
                 <Link to="/dashboard" className="mr-3 hover:text-yellow-700">
                   Dashboard
                 </Link>
@@ -62,10 +70,7 @@ const Navbar = () => {
             <Link to="/" className="mr-3">
               Home
             </Link>
-            <Link to="/addService" className="mr-3 hover:text-cyan-400">
-              Add Service
-            </Link>
-            <Link className="mr-3 hover:text-blue-900">Blogs</Link>
+         <Link to='/blogs' className="mr-3 hover:text-blue-900">Blogs</Link>
             <Link to="/dashboard" className="mr-3 hover:text-yellow-700">
               Dashboard
             </Link>
@@ -82,9 +87,7 @@ const Navbar = () => {
       <div className="flex-none gap-2">
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div
-            title={user?.displayName}
-             className="w-10 rounded-full">
+            <div title={user?.displayName} className="w-10 rounded-full">
               {user?.photoURL ? (
                 <img src={user?.photoURL} alt="" />
               ) : (
@@ -97,26 +100,17 @@ const Navbar = () => {
             className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
           >
             <div className="lg:hidden block">
-              { user?.uid ? (
+              {user?.uid ? (
                 <>
                   {" "}
-                  <li>
-                    {" "}
-                    <Link to="/addService" className="mr-3 hover:text-cyan-400">
-                      Add Service
-                    </Link>
-                  </li>
                   <li>
                     <Link to="/" className="mr-3">
                       Home
                     </Link>
                   </li>
                   <li>
-                    <Link to='/blogs' className="mr-3 hover:text-blue-900">Blogs</Link>
-                  </li>
-                  <li>
-                    <Link to="/review" className="mr-3 hover:text-yellow-700">
-                      My Review
+                    <Link to="/blogs" className="mr-3 hover:text-blue-900">
+                      Blogs
                     </Link>
                   </li>
                   <li>
@@ -143,18 +137,7 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    {" "}
-                    <Link to="/addService" className="mr-3 hover:text-cyan-400">
-                      Add Service
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="mr-3 hover:text-blue-900">Blogs</Link>
-                  </li>
-                  <li>
-                    <Link to="/review" className="mr-3 hover:text-yellow-700">
-                      My Review
-                    </Link>
+                    <Link to='/blogs' className="mr-3 hover:text-blue-900">Blogs</Link>
                   </li>
                 </>
               )}
@@ -169,7 +152,7 @@ const Navbar = () => {
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default Navbar;

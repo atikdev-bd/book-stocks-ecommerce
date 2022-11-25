@@ -13,7 +13,7 @@ const BannerItems = () => {
             <p className="py-6 text-xl">
             Knowledge There is no alternative to reading our books to gain immense knowledge for every human being . so why join then hold on to books . Books are our friends .
             </p>
-            <button className="btn btn-primary">Buy a book</button>
+            
           </div>
         </div>
       </div>

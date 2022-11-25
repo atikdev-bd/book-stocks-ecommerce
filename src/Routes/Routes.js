@@ -7,6 +7,7 @@ import Orders from "../DashBoard/DashBoard/Orders/Orders";
 import DashBoardLayout from "../Layout/DashBoardLayout";
 import Main from "../Layout/Main";
 import AllBooks from "../Pages/Home/AllBooks/AllBooks";
+import Blogs from "../Pages/Home/Blogs/Blogs";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Home/Login/Login";
 import Register from "../Pages/Home/Register/Register";
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
             {
                 path : '/register',
                 element : <Register></Register>
+            },
+            {
+                path : '/blogs',
+                element : <Blogs></Blogs>
             },
         ]
     },
