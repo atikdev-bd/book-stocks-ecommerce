@@ -5,24 +5,19 @@ import GoogleIcon from "../../../Assets/icons/icons8-google-100.png";
 import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
 
+  const from = location.state?.from?.pathname || "/";
 
-    const navigate = useNavigate();
-    const location = useLocation();
-  
-    
-    const from = location.state?.from?.pathname || "/";
-
-
-  const { emailAndPasswordLogin,googleLogin } = useContext(AuthContext);
+  const { emailAndPasswordLogin, googleLogin } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
   const loginInfo = (data) => {
     const { email, password } = data;
 
     emailAndPasswordLogin(email, password)
       .then((result) => {
-
-        navigate(from, {replace : true})
+        navigate(from, { replace: true });
         console.log(result.user);
       })
       .catch((error) => {
@@ -32,17 +27,14 @@ const Login = () => {
 
   const handleGoogle = () => {
     googleLogin()
-    .then(res =>{
-
-        navigate(from, {replace : true})
-        console.log(res.user)
-    }).catch(error => {
+      .then((res) => {
+        navigate(from, { replace: true });
+        console.log(res.user);
+      })
+      .catch((error) => {
         console.log(error);
-    })
+      });
   };
-
-
-
 
   return (
     <div className="hero min-h-screen ">

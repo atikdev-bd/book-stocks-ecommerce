@@ -7,10 +7,26 @@ import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 const Navbar = () => {
 
   const {user,logOut} = useContext(AuthContext)
-  console.log(user.photoURL);
+
     return (
         <div className="navbar">
       <div className="flex-1">
+      <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </label>
         <Link to="/home" > <img src={""} alt="" /></Link>
         <Link to="/home" className="btn btn-ghost normal-case">
         <span className="text-4xl font-bold">B</span><span className="text-xl"> -Stock</span>
@@ -66,7 +82,9 @@ const Navbar = () => {
       <div className="flex-none gap-2">
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
+            <div
+            title={user?.displayName}
+             className="w-10 rounded-full">
               {user?.photoURL ? (
                 <img src={user?.photoURL} alt="" />
               ) : (

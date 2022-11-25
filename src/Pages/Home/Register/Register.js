@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import GoogleIcon from "../../../Assets/icons/icons8-google-100.png";
 import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
 
 const Register = () => {
+  const navigate = useNavigate()
   const { register, handleSubmit } = useForm();
   const { createUser, updateUser } = useContext(AuthContext);
 
   const registerInfo = (data) => {
     console.log(data);
-    const { email, password, name } = data;
+    const { email, password, name,users } = data;
     const userInfo = {
       displayName: name,
     };
@@ -19,10 +20,11 @@ const Register = () => {
       .then((result) => {
         console.log(result.user);
 
-      ///update user name ????
+        ///update user name ????
         updateUser(userInfo)
           .then((result) => {
-            usersInfo(email, userInfo?.displayName);
+            navigate('/')
+            usersInfo(email, userInfo?.displayName, users);
           })
           .catch((error) => {});
       })
@@ -31,11 +33,12 @@ const Register = () => {
       });
   };
 
-//// create userInfo
-  const usersInfo = (email, name) => {
+  //// create userInfo
+  const usersInfo = (email, name,users) => {
     const user = {
       email,
       name,
+      role : users
     };
 
     /// get user info and post user info in backend to database ///
@@ -48,18 +51,9 @@ const Register = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+      
       });
   };
-
-  const userIn = [
-    {
-      user: "Normal User",
-    },
-    {
-      user: "Seller User",
-    },
-  ];
 
   return (
     <div>
@@ -104,17 +98,12 @@ const Register = () => {
               <label className="label">
                 <span className="label-text">Chose user</span>
               </label>
-              <select name="" className="select select-bordered w-full">
-                {userIn.map((us, index) => (
-                  <option
-                    {...register("select")}
-                    name="select"
-                    value={us.user}
-                    key={index}
-                  >
-                    {us.user}
-                  </option>
-                ))}
+              <select
+                {...register("users")}
+                className="select select-bordered w-full"
+              >
+                <option value="buyer account">buyer account</option>
+                <option value="seller account">seller account</option>
               </select>
               <div className="form-control">
                 <label className="label">

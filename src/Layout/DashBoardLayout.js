@@ -23,12 +23,15 @@ const DashBoardLayout = () => {
             </li>
             <li className="mt-4">
               <>
-                <Link to="/dashboard/allUsers">All Users</Link>
-                <Link className="mt-4" to="/dashboard/adddoctor">
-                  Add Doctor
+                <Link to="/dashboard/add/products">Add Products</Link>
+                <Link className="mt-4" to="/dashboard/products">
+                 My Products
                 </Link>
-                <Link className="mt-4" to="/dashboard/manageDoctor">
-                  Doctors page
+                <Link className="mt-4" to="/dashboard/sellers">
+                  All Sellers
+                </Link>
+                <Link className="mt-4" to="/dashboard/buyers">
+                  All Buyers
                 </Link>
               </>
             </li>

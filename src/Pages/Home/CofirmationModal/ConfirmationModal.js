@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
 
+
 const ConfirmationModal = ({ setBookInfo, bookInfo }) => {
   const { user } = useContext(AuthContext);
 
-  console.log(bookInfo);
   //  const {name, price ,} = bookInfo
   const handleSubmit = (e) => {
     e.preventDefault();
