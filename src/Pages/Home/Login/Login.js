@@ -18,7 +18,7 @@ const Login = () => {
     emailAndPasswordLogin(email, password)
       .then((result) => {
         navigate(from, { replace: true });
-        console.log(result.user);
+       
       })
       .catch((error) => {
         console.log(error.message);
@@ -29,10 +29,10 @@ const Login = () => {
     googleLogin()
       .then((res) => {
         navigate(from, { replace: true });
-        console.log(res.user);
+        
       })
       .catch((error) => {
-        console.log(error);
+        
       });
   };
 

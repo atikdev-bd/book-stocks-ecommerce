@@ -6,7 +6,7 @@ import Navbar from "../Pages/Shared/Navbar/Navbar";
 
 const DashBoardLayout = () => {
   const { user } = useContext(AuthContext);
-  console.log(user.email);
+ 
   const [userInfo, setUserInfo] = useState([]);
 
   const info = userInfo[0];
@@ -61,6 +61,13 @@ const DashBoardLayout = () => {
                     </Link>
                     <Link className="mt-4" to="/dashboard/buyers">
                       All Buyers
+                    </Link>
+
+                    <Link to="/dashboard/orders">My Orders</Link>
+
+                    <Link to="/dashboard/add/products">Add Products</Link>
+                    <Link className="mt-4" to="/dashboard/products">
+                      My Products
                     </Link>
                   </>
                 )}

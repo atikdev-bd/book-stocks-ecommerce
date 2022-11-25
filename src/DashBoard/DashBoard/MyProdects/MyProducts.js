@@ -6,20 +6,46 @@ import Loader from "../../../Pages/Shared/Loader/Loader";
 const MyProducts = () => {
   const { user } = useContext(AuthContext);
   const name = user?.displayName;
-  console.log(name);
 
-  const { data: books , isLoading } = useQuery({
+  const {
+    data: books,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["books"],
     queryFn: async () => {
       const res = await fetch(`http://localhost:5000/books?name=${name}`);
       const data = res.json();
-      console.log(data);
+
       return data;
     },
   });
 
-  if(isLoading){
-    return <Loader></Loader>
+  const handleDelete = (id) => {
+    console.log(id);
+    fetch(`http://localhost:5000/books/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        refetch();
+        console.log(data);
+      });
+  };
+
+  const handleAdvertise = (id) => {
+    fetch(`http://localhost:5000/books/${id}`, {
+      method: "PUT",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        refetch()
+        console.log(data);
+      });
+  };
+
+  if (isLoading) {
+    return <Loader></Loader>;
   }
 
   return (
@@ -31,8 +57,9 @@ const MyProducts = () => {
             <th>Books Photo</th>
             <th>Books</th>
             <th>Price</th>
-            <th>Seller Name</th>
-            <th>Location</th>
+            <th>Sale status</th>
+            <th>Advertise</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -48,8 +75,29 @@ const MyProducts = () => {
               </td>
               <td>{book.name}</td>
               <td>{book.resalePrice}</td>
-              <td>{book.sellerName}</td>
-              <td>{book.location}</td>
+              <td>
+                <button className="btn btn-sm btn-accent">Available</button>
+              </td>
+              <td>
+                {
+                    book?.IsAdvertise ?  <button
+                    onClick={() => handleAdvertise(book?._id)}
+                    className="btn btn-sm btn-accent"
+                  >
+                    Advertise
+                  </button> :
+                  <button disabled  className="btn btn-xs btn-primary" >Advertise run</button>
+                }
+               
+              </td>
+              <td>
+                <button
+                  onClick={() => handleDelete(book?._id)}
+                  className="btn btn-sm btn-warning"
+                >
+                  Delete
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

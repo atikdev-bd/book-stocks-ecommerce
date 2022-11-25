@@ -15,13 +15,12 @@ const AddProducts = () => {
 
   const bookInfo = (data) => {
     const photo = data.photo[0];
-    console.log(photo);
-    console.log(data);
+   
 
     const formData = new FormData();
     formData.append("image", photo);
     const url = `https://api.imgbb.com/1/upload?key=${imgHostKey}`;
-    console.log(url);
+   
     fetch(url, {
       method: "POST",
       body: formData,
@@ -30,7 +29,7 @@ const AddProducts = () => {
       .then((imgData) => {
         if (imgData.success) {
           const img = imgData.data.url;
-          console.log(img);
+         
           const book = {
             sellerName: data.name,
             name: data.book,
@@ -39,7 +38,7 @@ const AddProducts = () => {
             location: data.location,
             img: img,
           };
-          console.log(book);
+      
           fetch("http://localhost:5000/books", {
             method: "POST",
             headers: {
@@ -49,7 +48,7 @@ const AddProducts = () => {
           })
             .then((res) => res.json())
             .then((result) => {
-              console.log(result);
+             
               toast.success("Book added successfully");
               navigate("/dashboard/products");
             });

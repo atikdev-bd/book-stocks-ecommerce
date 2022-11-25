@@ -10,7 +10,7 @@ const Register = () => {
   const { createUser, updateUser } = useContext(AuthContext);
 
   const registerInfo = (data) => {
-    console.log(data);
+
     const { email, password, name,users } = data;
     const userInfo = {
       displayName: name,
@@ -18,7 +18,7 @@ const Register = () => {
     ////create user email and password //
     createUser(email, password)
       .then((result) => {
-        console.log(result.user);
+       
 
         ///update user name ????
         updateUser(userInfo)
