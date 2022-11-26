@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Toaster } from "react-hot-toast";
 import { useParams } from "react-router-dom";
 
 import ConfirmationModal from "../CofirmationModal/ConfirmationModal";
@@ -40,6 +41,8 @@ const AllBooks = () => {
      
      ></ConfirmationModal>
     }
+
+    <Toaster></Toaster>
     </>
   );
 };

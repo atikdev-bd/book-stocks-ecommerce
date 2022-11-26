@@ -15,7 +15,6 @@ const AdvertiseSection = () => {
   return (
     AdvertiseData.length && (
       <div className="mx-auto ml-10 lg:ml-6">
-        (
         <>
           {" "}
           <h1 className="text-3xl lg:text-4xl mb-10 text-center text-primary">
@@ -27,7 +26,6 @@ const AdvertiseSection = () => {
             ))}
           </div>
         </>
-        )
       </div>
     )
   );

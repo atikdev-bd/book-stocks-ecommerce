@@ -4,6 +4,7 @@ import AllBuyers from "../DashBoard/DashBoard/AllBuyers/AllBuyers";
 import AllSellers from "../DashBoard/DashBoard/AllSerllers/AllSellers";
 import MyProducts from "../DashBoard/DashBoard/MyProdects/MyProducts";
 import Orders from "../DashBoard/DashBoard/Orders/Orders";
+import Payment from "../DashBoard/DashBoard/Payment/Payment";
 import DashBoardLayout from "../Layout/DashBoardLayout";
 import Main from "../Layout/Main";
 import AllBooks from "../Pages/Home/AllBooks/AllBooks";
@@ -71,6 +72,11 @@ export const router = createBrowserRouter([
           {
             path: "/dashboard/buyers",
             element: <AllBuyers></AllBuyers>
+          },
+          {
+            path: "/dashboard/payment/:id",
+            loader : ({params})=>fetch(`http://localhost:5000/bookings/${params.id}`),
+            element: <Payment></Payment>
           },
          
         ],

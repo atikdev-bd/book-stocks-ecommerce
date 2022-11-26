@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
 
-
 const ConfirmationModal = ({ setBookInfo, bookInfo }) => {
   const { user } = useContext(AuthContext);
+
 
   //  const {name, price ,} = bookInfo
   const handleSubmit = (e) => {
@@ -33,10 +33,9 @@ const ConfirmationModal = ({ setBookInfo, bookInfo }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data?.acknowledged) {
-          setBookInfo(null);
-          toast.success("successfully");
-        }
+        setBookInfo(null);
+        toast.success("Booked Successfully");
+        
       });
   };
 

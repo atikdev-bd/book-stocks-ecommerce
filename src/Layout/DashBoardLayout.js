@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider/AuthProvider";
+import Footer from "../Pages/Shared/Footer/Footer";
 import Loader from "../Pages/Shared/Loader/Loader";
 import Navbar from "../Pages/Shared/Navbar/Navbar";
 
@@ -11,6 +12,7 @@ const DashBoardLayout = () => {
   const [userInfo, setUserInfo] = useState([]);
 
   const info = userInfo[0];
+
 
   const { data: users = [], isLoading } = useQuery({
     queryKey: ["users"],
@@ -79,6 +81,7 @@ if(isLoading || loading || !users){
           </ul>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

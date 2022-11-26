@@ -23,7 +23,7 @@ const AllBook = ({ book , setBookInfo}) => {
           </div>
 
           <div className="card-actions justify-end">
-            <label onClick={()=>setBookInfo(book)} htmlFor="my-modal"  className="btn btn-primary">Buy now</label>
+            <label onClick={()=>setBookInfo(book)} htmlFor="my-modal"  className="btn btn-primary">Book Now</label>
           </div>
         </div>
       </div>
