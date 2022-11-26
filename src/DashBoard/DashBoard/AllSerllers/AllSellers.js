@@ -12,6 +12,10 @@ const AllSellers = () => {
     },
   });
 
+  const handleDelete =(id)=>{
+    console.log(id);
+  }
+
   if(isLoading){
     return <Loader></Loader>
   }
@@ -34,7 +38,9 @@ const AllSellers = () => {
               <td>{seller?.name}</td>
               <td>{seller?.email}</td>
               <td>{seller?.role}</td>
-              <td>Blue</td>
+              <td>
+                <button onClick={()=>handleDelete(seller._id)} className="btn btn-xs btn-warning">Delete</button>
+              </td>
             </tr>
           ))}
         </tbody>

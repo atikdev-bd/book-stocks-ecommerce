@@ -5,20 +5,20 @@ import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
 import Loader from "../../../Pages/Shared/Loader/Loader";
 
 const Orders = () => {
-
-  const {user} = useContext(AuthContext)
-  const { data: orders = [] ,isLoading } = useQuery({
+  const { user } = useContext(AuthContext);
+  const { data: orders = [], isLoading } = useQuery({
     queryKey: ["orders"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/orders?email=${user.email}`);
+      const res = await fetch(
+        `http://localhost:5000/orders?email=${user.email}`
+      );
       const data = await res.json();
       return data;
-    
     },
   });
 
-  if(isLoading){
-    return <Loader></Loader>
+  if (isLoading) {
+    return <Loader></Loader>;
   }
   return (
     <>
@@ -40,10 +40,14 @@ const Orders = () => {
                 <td>{order.bookName}</td>
                 <td>{order.price}</td>
                 <td>
-                  <Link to={`/dashboard/payment/${order._id}`}>
-                    {" "}
-                    <button className="btn btn-xs btn-primary">Pay</button>
-                  </Link>
+                  {order.sold ? (
+                    <Link to={`/dashboard/payment/${order._id}`}>
+                      {" "}
+                      <button className="btn btn-xs btn-primary">Pay</button>
+                    </Link>
+                  ) : (
+                    <button className="btn btn-xs btn-success">paid</button>
+                  )}
                 </td>
               </tr>
             ))}

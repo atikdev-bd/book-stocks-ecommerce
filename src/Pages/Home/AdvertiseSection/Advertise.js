@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Advertise = ({ Advertise }) => {
-  console.log(Advertise);
+ 
   const { name, resalePrice, categoryId, img } = Advertise;
   return (
     <div>

@@ -18,7 +18,6 @@ const AllBuyers = () => {
   });
 
   const handleDelete = (id) => {
-    console.log(id);
 
     fetch(`http://localhost:5000/buyers/${id}`, {
       method: "DELETE",
@@ -29,7 +28,7 @@ const AllBuyers = () => {
             toast.success('delete successfully')
         }
          refetch();
-        console.log(data);
+       
       });
   };
 
