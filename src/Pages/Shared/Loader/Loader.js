@@ -1,9 +1,12 @@
 import React from 'react';
+import { DotLoader } from 'react-spinners';
 
 const Loader = () => {
     return (
-        <div>
-            <h1>Loading...</h1>
+        <div className='flex justify-center items-center'>
+           <div>
+           <DotLoader color="#36d7b7" />
+           </div>
         </div>
     );
 };

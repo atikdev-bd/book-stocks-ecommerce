@@ -90,15 +90,18 @@ const CheckoutForm = ({booking}) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+  <>
+ <h1 className="mb-4 text-3xl font-semibold">Payment here !</h1>
+<div className=" bg-slate-100 border rounded p-12 shadow-lg text-black">
+     <form onSubmit={handleSubmit}>
       <CardElement
         options={{
           style: {
             base: {
               fontSize: "16px",
-              color: "#424770",
+              color: "#FFFFFF",
               "::placeholder": {
-                color: "#aab7c4",
+                color: "#000000",
               },
             },
             invalid: {
@@ -107,10 +110,12 @@ const CheckoutForm = ({booking}) => {
           },
         }}
       />
-      <button type="submit" disabled={!stripe ||!clientSecret}>
+      <button className="mt-4 btn btn-xs rounded" type="submit" disabled={!stripe ||!clientSecret}>
         Pay
       </button>
     </form>
+   </div>
+  </>
   );
 };
 
