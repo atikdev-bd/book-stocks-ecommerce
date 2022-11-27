@@ -1,44 +1,48 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import GoogleIcon from "../../../Assets/icons/icons8-google-100.png";
 import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
+import useToken from "../../../Hooks/UseToken";
 
 const Register = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [registerUserEmail, setRegisterUserEmail] = useState("");
+
+  const [Token] = useToken(registerUserEmail);
+
+  if (Token) {
+    navigate("/");
+  }
+
   const { register, handleSubmit } = useForm();
   const { createUser, updateUser } = useContext(AuthContext);
 
   const registerInfo = (data) => {
-
-    const { email, password, name,users } = data;
+    const { email, password, name, users } = data;
     const userInfo = {
       displayName: name,
     };
     ////create user email and password //
     createUser(email, password)
       .then((result) => {
-       
-
         ///update user name ????
         updateUser(userInfo)
           .then((result) => {
-            navigate('/')
+            setRegisterUserEmail(email);
             usersInfo(email, userInfo?.displayName, users);
           })
           .catch((error) => {});
       })
-      .catch((error) => {
-       
-      });
+      .catch((error) => {});
   };
 
   //// create userInfo
-  const usersInfo = (email, name,users) => {
+  const usersInfo = (email, name, users) => {
     const user = {
       email,
       name,
-      role : users
+      role: users,
     };
 
     /// get user info and post user info in backend to database ///
@@ -50,9 +54,7 @@ const Register = () => {
       body: JSON.stringify(user),
     })
       .then((res) => res.json())
-      .then((data) => {
-      
-      });
+      .then((data) => {});
   };
 
   return (

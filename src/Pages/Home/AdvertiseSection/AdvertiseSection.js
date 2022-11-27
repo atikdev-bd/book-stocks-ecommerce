@@ -1,19 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
 import Advertise from "./Advertise";
 
 const AdvertiseSection = () => {
+
   const { data: AdvertiseData = [] } = useQuery({
     queryKey: ["advertise"],
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/advertise");
       const data = await res.json();
-    
-      return data;
+     const unsold = data.filter(d => !d.sold === true)
+     
+      return unsold;
     },
   });
   return (
-    AdvertiseData.length && (
+    AdvertiseData.length && !AdvertiseData.sold && (
       <div className="mx-auto ml-10 lg:ml-6">
         <>
           {" "}

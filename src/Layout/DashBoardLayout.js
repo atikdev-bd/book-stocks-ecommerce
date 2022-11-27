@@ -13,6 +13,8 @@ const DashBoardLayout = () => {
 
   const info = userInfo[0];
 
+  console.log(user);
+
 
   const { data: users = [], isLoading } = useQuery({
     queryKey: ["users"],
@@ -22,6 +24,7 @@ const DashBoardLayout = () => {
       );
       const data = await res.json();
       setUserInfo(data);
+      console.log(data)
       return data;
     },
   });

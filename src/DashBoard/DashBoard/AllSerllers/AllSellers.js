@@ -3,7 +3,7 @@ import React from "react";
 import Loader from "../../../Pages/Shared/Loader/Loader";
 
 const AllSellers = () => {
-  const { data: sellers = [], isLoading } = useQuery({
+  const { data: sellers = [], isLoading, refetch } = useQuery({
     queryKey: ["sellers"],
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/sellers");
@@ -13,7 +13,14 @@ const AllSellers = () => {
   });
 
   const handleDelete =(id)=>{
-    console.log(id);
+    fetch(`http://localhost:5000/seller/${id}`,{
+      method : "DELETE",
+    })
+    .then(res => res.json())
+    .then(data =>{
+      console.log(data)
+      refetch()
+    })
   }
 
   if(isLoading){

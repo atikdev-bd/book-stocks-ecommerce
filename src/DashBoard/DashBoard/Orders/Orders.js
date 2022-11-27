@@ -40,7 +40,7 @@ const Orders = () => {
                 <td>{order.bookName}</td>
                 <td>{order.price}</td>
                 <td>
-                  {order.sold ? (
+                  {!order.sold ? (
                     <Link to={`/dashboard/payment/${order._id}`}>
                       {" "}
                       <button className="btn btn-xs btn-primary">Pay</button>

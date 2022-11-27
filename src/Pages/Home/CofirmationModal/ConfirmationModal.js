@@ -23,6 +23,8 @@ const ConfirmationModal = ({ setBookInfo, bookInfo }) => {
       phone: phone,
     };
 
+    console.log(order)
+
     setBookInfo(null);
     fetch("http://localhost:5000/orders", {
       method: "POST",

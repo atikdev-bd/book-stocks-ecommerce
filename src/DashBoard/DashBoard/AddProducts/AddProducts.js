@@ -33,12 +33,13 @@ const AddProducts = () => {
           const book = {
             sellerName: data.name,
             name: data.book,
-            resalePrice: ` $${data.price}`,
+            resalePrice:data.price,
             categoryId: data.categoryId,
             location: data.location,
             isAdvertise : false,
             img: img,
           };
+          console.log(book);
       
           fetch("http://localhost:5000/books", {
             method: "POST",
@@ -106,7 +107,7 @@ const AddProducts = () => {
                 </label>
                 <select {...register("categoryId")}>
                   <option value="Literatures">Literatures</option>
-                  <option value="Pomes">Pomes</option>
+                  <option value="Pomes">Poems</option>
                   <option value="Religious">Religious</option>
                   <option value="Thrillers">Thrillers</option>
                 </select>
