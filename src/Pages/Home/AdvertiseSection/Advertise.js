@@ -15,11 +15,12 @@ const Advertise = ({ Advertise }) => {
           <p> Category : {categoryId}</p>
           <p> Book Price :{resalePrice}</p>
         </div>
-
-        <button className="btn btn-active rounded-none btn-secondary hover:bg-teal-600">
+        <Link to={`category/${categoryId}`}> <button className="btn btn-active w-full rounded-none btn-secondary hover:bg-teal-600">
+        Buy here
           {" "}
-          <Link to={`category/${categoryId}`}> Buy here</Link>
-        </button>
+         
+        </button></Link>
+        
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ const BookCategories = () => {
       <div>
         <h1 className="text-3xl text-center mt-14 mb-4 text-emerald-600 ">
           {" "}
-          <span className="text-5xl">C</span>HOSE YOUR CATEGORIES
+          <span className=" style text-5xl font-bold">C</span>HOSE YOUR CATEGORIES
         </h1>
       </div>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mx-3 lg:mx-4  mt-20 mb-10">

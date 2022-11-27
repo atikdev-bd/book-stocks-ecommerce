@@ -10,7 +10,7 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
   return (
-    <div className="navbar">
+    <div className="navbar font-semibold">
       <div className="flex-1">
         <label
           htmlFor="dashboard-drawer"

@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
 
 const ConfirmationModal = ({ setBookInfo, bookInfo }) => {
   const { user } = useContext(AuthContext);
-
+const navigate = useNavigate()
 
   //  const {name, price ,} = bookInfo
   const handleSubmit = (e) => {
@@ -36,6 +37,8 @@ const ConfirmationModal = ({ setBookInfo, bookInfo }) => {
       .then((res) => res.json())
       .then((data) => {
         setBookInfo(null);
+        navigate('/dashboard/orders')
+
         toast.success("Booked Successfully");
         
       });

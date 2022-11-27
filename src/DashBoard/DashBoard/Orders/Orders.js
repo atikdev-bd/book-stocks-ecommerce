@@ -6,6 +6,7 @@ import Loader from "../../../Pages/Shared/Loader/Loader";
 
 const Orders = () => {
   const { user } = useContext(AuthContext);
+
   const { data: orders = [], isLoading } = useQuery({
     queryKey: ["orders"],
     queryFn: async () => {

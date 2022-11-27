@@ -75,7 +75,10 @@ const MyProducts = () => {
               <td>{book.name}</td>
               <td>{book.resalePrice}</td>
               <td>
-                <button className="btn btn-sm btn-accent">Available</button>
+               {
+                !book?.sold ?  <button className="btn btn-sm btn-accent">Available</button> :
+                <button disabled className="btn btn-sm btn-accent">Stock out</button>
+               }
               </td>
               <td>
                 {
@@ -84,9 +87,15 @@ const MyProducts = () => {
                     className="btn btn-sm btn-accent"
                   >
                     Advertise
+
                   </button> :
+                  book?.sold ?  <button disabled  className="btn btn-xs btn-primary" >Sold</button> : 
                   <button disabled  className="btn btn-xs btn-primary" >Advertise run</button>
                 }
+                
+                 
+                 
+                
                
               </td>
               <td>

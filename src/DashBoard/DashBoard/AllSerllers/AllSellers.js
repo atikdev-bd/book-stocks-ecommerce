@@ -3,7 +3,11 @@ import React from "react";
 import Loader from "../../../Pages/Shared/Loader/Loader";
 
 const AllSellers = () => {
-  const { data: sellers = [], isLoading, refetch } = useQuery({
+  const {
+    data: sellers = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["sellers"],
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/sellers");
@@ -12,19 +16,27 @@ const AllSellers = () => {
     },
   });
 
-  const handleDelete =(id)=>{
-    fetch(`http://localhost:5000/seller/${id}`,{
-      method : "DELETE",
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/seller/${id}`, {
+      method: "DELETE",
     })
-    .then(res => res.json())
-    .then(data =>{
-      console.log(data)
-      refetch()
-    })
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        refetch();
+      });
+  };
 
-  if(isLoading){
-    return <Loader></Loader>
+  const handleVerify = (id) => {
+    fetch(`http://localhost:5000/verify/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+
+  if (isLoading) {
+    return <Loader></Loader>;
   }
   return (
     <div className="overflow-x-auto">
@@ -35,6 +47,7 @@ const AllSellers = () => {
             <th>Name</th>
             <th>Email</th>
             <th>Account</th>
+            <th>Account status</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -46,7 +59,26 @@ const AllSellers = () => {
               <td>{seller?.email}</td>
               <td>{seller?.role}</td>
               <td>
-                <button onClick={()=>handleDelete(seller._id)} className="btn btn-xs btn-warning">Delete</button>
+                {!seller?.verified ? (
+                  <button
+                    onClick={() => handleVerify(seller._id)}
+                    className="btn btn-xs btn-primary"
+                  >
+                    Verify
+                  </button>
+                ) : (
+                  <button disabled className="btn btn-xs bg-green-500 text-white ">
+                    verified
+                  </button>
+                )}
+              </td>
+              <td>
+                <button
+                  onClick={() => handleDelete(seller._id)}
+                  className="btn btn-xs btn-warning"
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}

@@ -3,3 +3,7 @@
     transform: scale(1.1);
     transition: all 0.4s ease-in;
 }
+
+.style{
+    font-family: "Courier New", Courier, monospace;
+}
