@@ -91,7 +91,7 @@ const Login = () => {
               </div>
               <div>
                 <h1>
-                  New to Doctors Portal?{" "}
+                  You have no account ?{" "}
                   <Link className="text-secondary" to="/register">
                     Create new account
                   </Link>

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import GoogleIcon from "../../../Assets/icons/icons8-google-100.png";
 import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
@@ -54,7 +55,9 @@ const Register = () => {
       body: JSON.stringify(user),
     })
       .then((res) => res.json())
-      .then((data) => {});
+      .then((data) => {
+        toast.success('Register Successfully')
+      });
   };
 
   return (

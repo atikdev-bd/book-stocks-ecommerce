@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import ProfileIcon from "../../../Assets/icons/icons8-account-64.png";
 import TitleIcon from "../../../Assets/icons/icons8-literature-100.png";
 import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
-import './Navbar.css'
+import "./Navbar.css";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -70,9 +70,8 @@ const Navbar = () => {
             <Link to="/" className="mr-3">
               Home
             </Link>
-         <Link to='/blogs' className="mr-3 hover:text-blue-900">Blogs</Link>
-            <Link to="/dashboard" className="mr-3 hover:text-yellow-700">
-              Dashboard
+            <Link to="/blogs" className="mr-3 hover:text-blue-900">
+              Blogs
             </Link>
             <Link to="/login" className="mr-3 hover:text-sky-700">
               Login
@@ -109,6 +108,14 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
+                    <Link
+                      to="/dashboard"
+                      className="mr-3 hover:text-yellow-700"
+                    >
+                      Dashboard
+                    </Link>
+                  </li>
+                  <li>
                     <Link to="/blogs" className="mr-3 hover:text-blue-900">
                       Blogs
                     </Link>
@@ -137,7 +144,9 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to='/blogs' className="mr-3 hover:text-blue-900">Blogs</Link>
+                    <Link to="/blogs" className="mr-3 hover:text-blue-900">
+                      Blogs
+                    </Link>
                   </li>
                 </>
               )}
