@@ -3,8 +3,6 @@ import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-// import toast from "react-hot-toast";
-// import { Navigate } from "react-router-dom";
 
 const AddProducts = () => {
   const imgHostKey = process.env.REACT_APP_imbb_key;

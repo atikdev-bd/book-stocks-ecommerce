@@ -1,10 +1,6 @@
 import React from "react";
 import './BookCategory.css'
 
-import img1 from '../../../Assets/BookCategories/img (1).jpg'
-import img2 from '../../../Assets/BookCategories/img (2).jpg'
-import img3 from '../../../Assets/BookCategories/img (3).jpg'
-import img4 from '../../../Assets/BookCategories/img (4).jpg'
 import { Link } from "react-router-dom";
 
 const BookCategory = ({books}) => {
