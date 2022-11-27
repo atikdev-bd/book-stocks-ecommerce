@@ -11,24 +11,27 @@ const AllBuyers = () => {
   } = useQuery({
     queryKey: ["buyers"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/buyers");
+      const res = await fetch(
+        "https://assignment-12-server-side-atikdev-bd.vercel.app/buyers"
+      );
       const data = await res.json();
       return data;
     },
   });
 
   const handleDelete = (id) => {
-
-    fetch(`http://localhost:5000/buyers/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://assignment-12-server-side-atikdev-bd.vercel.app/buyers/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
-        if (data.acknowledged === true){
-            toast.success('delete successfully')
+        if (data.acknowledged === true) {
+          toast.success("delete successfully");
         }
-         refetch();
-       
+        refetch();
       });
   };
 

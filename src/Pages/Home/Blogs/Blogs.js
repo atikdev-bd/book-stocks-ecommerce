@@ -2,7 +2,7 @@ import React from 'react';
 
 const Blogs = () => {
     return (
-        <div className="question-blog mt-20 mx-12 rounded-t-sm text-gray-900 font-semibold  bg-slate-400">
+        <div className="question-blog  mx-12 m-20 rounded-t-sm text-gray-900 font-semibold  bg-slate-400">
         <div className="question px-8 py-4">
           <h1 className="text-xl font-semibold">Question 1 : What are the different ways to manage a state in a react application ?</h1>
           <p>

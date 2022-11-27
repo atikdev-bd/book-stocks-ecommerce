@@ -10,29 +10,33 @@ const AllSellers = () => {
   } = useQuery({
     queryKey: ["sellers"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/sellers");
+      const res = await fetch(
+        "https://assignment-12-server-side-atikdev-bd.vercel.app/sellers"
+      );
       const data = await res.json();
       return data;
     },
   });
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/seller/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://assignment-12-server-side-atikdev-bd.vercel.app/seller/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         refetch();
       });
   };
 
   const handleVerify = (id) => {
-    fetch(`http://localhost:5000/verify/${id}`)
+    fetch(
+      `https://assignment-12-server-side-atikdev-bd.vercel.app/verify/${id}`
+    )
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
+      .then((data) => {});
   };
 
   if (isLoading) {
@@ -67,7 +71,10 @@ const AllSellers = () => {
                     Verify
                   </button>
                 ) : (
-                  <button disabled className="btn btn-xs bg-green-500 text-white ">
+                  <button
+                    disabled
+                    className="btn btn-xs bg-green-500 text-white "
+                  >
                     verified
                   </button>
                 )}

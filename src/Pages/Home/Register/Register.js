@@ -46,7 +46,7 @@ const Register = () => {
     };
 
     /// get user info and post user info in backend to database ///
-    fetch("http://localhost:5000/users", {
+    fetch("https://assignment-12-server-side-atikdev-bd.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",

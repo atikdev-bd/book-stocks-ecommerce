@@ -24,10 +24,10 @@ const navigate = useNavigate()
       phone: phone,
     };
 
-    console.log(order)
+
 
     setBookInfo(null);
-    fetch("http://localhost:5000/orders", {
+    fetch("https://assignment-12-server-side-atikdev-bd.vercel.app/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",

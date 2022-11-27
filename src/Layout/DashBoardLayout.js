@@ -5,32 +5,30 @@ import { AuthContext } from "../Context/AuthProvider/AuthProvider";
 import Footer from "../Pages/Shared/Footer/Footer";
 import Loader from "../Pages/Shared/Loader/Loader";
 import Navbar from "../Pages/Shared/Navbar/Navbar";
+import "./DashBoardLayout.css";
 
 const DashBoardLayout = () => {
-  const { user , loading } = useContext(AuthContext);
- 
+  const { user, loading } = useContext(AuthContext);
+
   const [userInfo, setUserInfo] = useState([]);
 
   const info = userInfo[0];
-
-  console.log(user);
-
 
   const { data: users = [], isLoading } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/users?email=${user?.email}`
+        `https://assignment-12-server-side-atikdev-bd.vercel.app/users?email=${user?.email}`
       );
       const data = await res.json();
       setUserInfo(data);
-      console.log(data)
+
       return data;
     },
   });
-if(isLoading || loading || !users){
-  return <Loader></Loader>
-}
+  if (isLoading || loading) {
+    return <Loader></Loader>;
+  }
   return (
     <div>
       <Navbar></Navbar>
@@ -43,7 +41,7 @@ if(isLoading || loading || !users){
         <div className="drawer-content">
           <Outlet></Outlet>
         </div>
-        <div className="drawer-side">
+        <div className="drawer-side font-bold mr-4 bg-slate-100">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80  text-base-content">
             {info?.role === "buyer account" && (
@@ -69,13 +67,6 @@ if(isLoading || loading || !users){
                     </Link>
                     <Link className="mt-4" to="/dashboard/buyers">
                       All Buyers
-                    </Link>
-
-                    <Link to="/dashboard/orders">My Orders</Link>
-
-                    <Link to="/dashboard/add/products">Add Products</Link>
-                    <Link className="mt-4" to="/dashboard/products">
-                      My Products
                     </Link>
                   </>
                 )}

@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useContext } from "react";
-import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
+import React from "react";
 import Advertise from "./Advertise";
 
 const AdvertiseSection = () => {
@@ -8,7 +7,7 @@ const AdvertiseSection = () => {
   const { data: AdvertiseData = [] } = useQuery({
     queryKey: ["advertise"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/advertise");
+      const res = await fetch("https://assignment-12-server-side-atikdev-bd.vercel.app/advertise");
       const data = await res.json();
      const unsold = data.filter(d => !d.sold === true)
      

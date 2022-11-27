@@ -14,7 +14,9 @@ const MyProducts = () => {
   } = useQuery({
     queryKey: ["books"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/books?name=${name}`);
+      const res = await fetch(
+        `https://assignment-12-server-side-atikdev-bd.vercel.app/books?name=${name}`
+      );
       const data = res.json();
 
       return data;
@@ -22,24 +24,28 @@ const MyProducts = () => {
   });
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/books/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://assignment-12-server-side-atikdev-bd.vercel.app/books/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         refetch();
-      
       });
   };
 
   const handleAdvertise = (id) => {
-    fetch(`http://localhost:5000/books/${id}`, {
-      method: "PUT",
-    })
+    fetch(
+      `https://assignment-12-server-side-atikdev-bd.vercel.app/books/${id}`,
+      {
+        method: "PUT",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
-        refetch()
-       
+        refetch();
       });
   };
 
@@ -75,28 +81,31 @@ const MyProducts = () => {
               <td>{book.name}</td>
               <td>{book.resalePrice}</td>
               <td>
-               {
-                !book?.sold ?  <button className="btn btn-sm btn-accent">Available</button> :
-                <button disabled className="btn btn-sm btn-accent">Stock out</button>
-               }
+                {!book?.sold ? (
+                  <button className="btn btn-sm btn-accent">Available</button>
+                ) : (
+                  <button disabled className="btn btn-sm btn-accent">
+                    Stock out
+                  </button>
+                )}
               </td>
               <td>
-                {
-                    !book?.isAdvertise ?  <button
+                {!book?.isAdvertise ? (
+                  <button
                     onClick={() => handleAdvertise(book?._id)}
                     className="btn btn-sm btn-accent"
                   >
                     Advertise
-
-                  </button> :
-                  book?.sold ?  <button disabled  className="btn btn-xs btn-primary" >Sold</button> : 
-                  <button disabled  className="btn btn-xs btn-primary" >Advertise run</button>
-                }
-                
-                 
-                 
-                
-               
+                  </button>
+                ) : book?.sold ? (
+                  <button disabled className="btn btn-xs btn-primary">
+                    Sold
+                  </button>
+                ) : (
+                  <button disabled className="btn btn-xs btn-primary">
+                    Advertise run
+                  </button>
+                )}
               </td>
               <td>
                 <button

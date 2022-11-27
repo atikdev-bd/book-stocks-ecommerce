@@ -4,7 +4,7 @@ import React from "react";
 const AllBook = ({ book , setBookInfo}) => {
   const { name, img, resalePrice, originalPrice, useTime, sellerName,location } = book;
   return (
-    <div>
+    <div className="">
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <figure>
           <img className=" w-80 lg:w-60 h-80" src={img} alt="Album" />
@@ -23,7 +23,7 @@ const AllBook = ({ book , setBookInfo}) => {
           </div>
 
           <div className="card-actions justify-end">
-            <label onClick={()=>setBookInfo(book)} htmlFor="my-modal"  className="btn btn-primary">Book Now</label>
+            <label onClick={()=>setBookInfo(book)} htmlFor="my-modal"  className="btn btn-primary">Buy Now</label>
           </div>
         </div>
       </div>

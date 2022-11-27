@@ -15,12 +15,11 @@ const AddProducts = () => {
 
   const bookInfo = (data) => {
     const photo = data.photo[0];
-   
 
     const formData = new FormData();
     formData.append("image", photo);
     const url = `https://api.imgbb.com/1/upload?key=${imgHostKey}`;
-   
+
     fetch(url, {
       method: "POST",
       body: formData,
@@ -29,28 +28,29 @@ const AddProducts = () => {
       .then((imgData) => {
         if (imgData.success) {
           const img = imgData.data.url;
-         
+
           const book = {
             sellerName: data.name,
             name: data.book,
-            resalePrice:data.price,
+            resalePrice: data.price,
             categoryId: data.categoryId,
             location: data.location,
-            isAdvertise : false,
+            isAdvertise: false,
             img: img,
           };
-          console.log(book);
-      
-          fetch("http://localhost:5000/books", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(book),
-          })
+
+          fetch(
+            "https://assignment-12-server-side-atikdev-bd.vercel.app/books",
+            {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(book),
+            }
+          )
             .then((res) => res.json())
             .then((result) => {
-             
               toast.success("Book added successfully");
               navigate("/dashboard/products");
             });

@@ -10,7 +10,7 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
   return (
-    <div className="navbar font-semibold">
+    <div className=" navbar font-semibold">
       <div className="flex-1">
         <label
           htmlFor="dashboard-drawer"
@@ -38,7 +38,7 @@ const Navbar = () => {
         </Link>
         <Link to="/" className="flex items-center ml-4 hover:text-green-600">
           <span className="text-4xl font-bold">B</span>
-          <span className="text-xl"> -Stock</span>
+          <span className="text-xl"> -Stocks</span>
         </Link>
       </div>
       <div className="link-div mr-28  font-bold hidden lg:block">
