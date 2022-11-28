@@ -17,13 +17,14 @@ const Register = () => {
   }
 
   const { register, handleSubmit } = useForm();
-  const { createUser, updateUser } = useContext(AuthContext);
+  const { createUser, updateUser, googleLogin } = useContext(AuthContext);
 
   const registerInfo = (data) => {
     const { email, password, name, users } = data;
     const userInfo = {
       displayName: name,
     };
+
     ////create user email and password //
     createUser(email, password)
       .then((result) => {
@@ -56,8 +57,16 @@ const Register = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        toast.success('Register Successfully')
+        toast.success("Register Successfully");
       });
+  };
+
+  const handleGoogle = () => {
+    googleLogin()
+      .then((res) => {
+        toast.success("Login successfully");
+      })
+      .catch((error) => {});
   };
 
   return (
@@ -134,7 +143,7 @@ const Register = () => {
                 </button>
               </p>
               <div
-                onClick={"googleLogin"}
+                onClick={handleGoogle}
                 className="flex justify-center items-center cursor-pointer border bg-emerald-200 hover:bg-emerald-300 rounded-full"
               >
                 <img className="w-12 " src={GoogleIcon} alt="" />

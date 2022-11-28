@@ -68,6 +68,7 @@ const AddProducts = () => {
                   {...register("name")}
                   type="text"
                   name="name"
+                  required
                   placeholder="Enter your name"
                   className="input input-bordered"
                 />
@@ -77,6 +78,7 @@ const AddProducts = () => {
                   {...register("book")}
                   type="text"
                   name="book"
+                  required
                   placeholder="Enter your book name"
                   className="input input-bordered"
                 />
@@ -86,6 +88,7 @@ const AddProducts = () => {
                   {...register("price")}
                   type="number"
                   name="price"
+                  required
                   placeholder="Enter your book price"
                   className="input input-bordered"
                 />
@@ -95,6 +98,7 @@ const AddProducts = () => {
                   {...register("location")}
                   type="text"
                   name="location"
+                  required
                   placeholder="Write your location"
                   className="input input-bordered"
                 />
@@ -112,12 +116,13 @@ const AddProducts = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Photo</span>
+                  <span className="label-text">Add your book photo</span>
                 </label>
                 <input
                   {...register("photo")}
                   type="file"
                   placeholder=""
+                  required
                   name="photo"
                   className="input input-bordered"
                 />

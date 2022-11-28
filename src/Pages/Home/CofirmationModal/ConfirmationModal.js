@@ -90,6 +90,7 @@ const navigate = useNavigate()
             <input
               type="text"
               name="phone"
+              required
               placeholder="Phone Number"
               className="input input-bordered w-full"
             />

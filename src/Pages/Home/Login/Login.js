@@ -65,6 +65,7 @@ const Login = () => {
                 </label>
                 <input
                   {...register("email")}
+                  required
                   type="text"
                   placeholder="email"
                   className="input input-bordered"
@@ -76,6 +77,7 @@ const Login = () => {
                 </label>
                 <input
                   {...register("password")}
+                  required
                   type="text"
                   placeholder="password"
                   className="input input-bordered"

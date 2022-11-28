@@ -19,7 +19,7 @@ const BookCategories = () => {
   return (
     <>
       <div>
-        <h1 className="text-3xl text-center mt-14 mb-4 text-emerald-600 ">
+        <h1 className=" text-2xl lg:text-3xl text-center mt-14 mb-4 text-emerald-600 ">
           {" "}
           <span className=" style text-5xl font-bold">C</span>HOSE YOUR CATEGORIES
         </h1>
