@@ -29,17 +29,35 @@ const Login = () => {
       .then((result) => {
         setLoginUserEmail(email);
 
-        toast.success("Login successfully");
+         toast.success("Login successfully");
       })
       .catch((error) => {
-        console.log(error);
+        const err = error?.message;
+
+        if (err === "Firebase: Error (auth/wrong-password).") {
+          return toast.error("Wrong password");
+        }
+        if (err === "Firebase: Error (auth/user-not-found).") {
+          return toast.error("User not found");
+        }
+        if (
+          err ===
+          "Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests)."
+        ) {
+          return toast.error(
+            "Access to this account has been temporarily disabled due to many failed login attempts."
+          );
+        }
       });
   };
 
   const handleGoogle = () => {
     googleLogin()
       .then((res) => {
+
+        toast.success('Login successfully')
         const email = res?.user?.email;
+
         setLoginUserEmail(email);
       })
       .catch((error) => {});

@@ -28,15 +28,25 @@ const Register = () => {
     ////create user email and password //
     createUser(email, password)
       .then((result) => {
+        toast.success("Register Successfully");
         ///update user name ????
         updateUser(userInfo)
           .then((result) => {
             setRegisterUserEmail(email);
             usersInfo(email, userInfo?.displayName, users);
           })
-          .catch((error) => {});
+          .catch((err) => {});
       })
-      .catch((error) => {});
+      .catch((err) => {
+        if (err?.code === "auth/email-already-in-use")
+          return toast.error("Email already in use");
+        if (err.code === "auth/weak-password") {
+          return toast.error("Weak password");
+        }
+        if (err.code === "auth/invalid-email") {
+          return toast.error("Invalid email");
+        }
+      });
   };
 
   //// create userInfo
