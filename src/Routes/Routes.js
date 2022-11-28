@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
            
             {
                 path : '/category/:id',
-                element : <AllBooks></AllBooks>
+                element : <PrivetRoute><AllBooks></AllBooks></PrivetRoute>
             },
             {
                 path : '/login',

@@ -64,6 +64,8 @@ const Register = () => {
   const handleGoogle = () => {
     googleLogin()
       .then((res) => {
+        const email = res?.user?.email;
+        setRegisterUserEmail(email);
         toast.success("Login successfully");
       })
       .catch((error) => {});

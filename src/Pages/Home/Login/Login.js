@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import GoogleIcon from "../../../Assets/icons/icons8-google-100.png";
 import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
@@ -10,13 +10,13 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [loginUserEmail , setLoginUserEmail] = useState('')
+  const [loginUserEmail, setLoginUserEmail] = useState("");
 
   const from = location.state?.from?.pathname || "/";
 
-  const [Token] = useToken(loginUserEmail)
+  const [Token] = useToken(loginUserEmail);
 
-  if(Token){
+  if (Token) {
     navigate(from, { replace: true });
   }
 
@@ -27,27 +27,22 @@ const Login = () => {
 
     emailAndPasswordLogin(email, password)
       .then((result) => {
-        setLoginUserEmail(email)
-     
-        toast.success('Login successfully')
-       
+        setLoginUserEmail(email);
+
+        toast.success("Login successfully");
       })
       .catch((error) => {
-       
+        console.log(error);
       });
   };
 
   const handleGoogle = () => {
     googleLogin()
       .then((res) => {
-
-        navigate(from, { replace: true });
-        toast.success('Login successfully')
-        
+        const email = res?.user?.email;
+        setLoginUserEmail(email);
       })
-      .catch((error) => {
-        
-      });
+      .catch((error) => {});
   };
 
   return (
@@ -112,7 +107,6 @@ const Login = () => {
           </div>
         </form>
       </div>
-      <Toaster></Toaster>
     </div>
   );
 };
