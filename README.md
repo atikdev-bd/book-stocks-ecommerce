@@ -1,8 +1,8 @@
 # B-stocks E-Commerce website!
 
-[Github server side code link](https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-atikdev-bd.git)
+[Github server side code link](https://github.com/atikdev-bd/Book-stocks-server-side.git)
 
-[Github client side code link](https://github.com/programming-hero-web-course-4/b612-used-products-resale-clients-side-atikdev-bd.git)
+[Github client side code link](https://github.com/atikdev-bd/book-stocks-ecommerce.git)
 
 [live site link](https://book-stock-2fd9e.web.app/)
 
