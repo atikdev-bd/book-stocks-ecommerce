@@ -44,11 +44,12 @@ const DashBoardLayout = () => {
         <div className="drawer-side font-bold mr-4 bg-slate-100">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80  text-base-content">
-            {info?.role === "buyer account" && (
-              <li>
-                <Link to="/dashboard/orders">My Orders</Link>
-              </li>
-            )}
+            {info?.role === "buyer account" 
+           && (
+                <li>
+                  <Link to="/dashboard/orders">My Orders</Link>
+                </li>
+              )}
             <li className="mt-4">
               <>
                 {info?.role === "seller account" && (

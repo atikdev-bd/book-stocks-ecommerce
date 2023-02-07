@@ -29,7 +29,7 @@ const Login = () => {
       .then((result) => {
         setLoginUserEmail(email);
 
-         toast.success("Login successfully");
+        toast.success("Login successfully");
       })
       .catch((error) => {
         const err = error?.message;
@@ -54,11 +54,26 @@ const Login = () => {
   const handleGoogle = () => {
     googleLogin()
       .then((res) => {
-
-        toast.success('Login successfully')
         const email = res?.user?.email;
-
         setLoginUserEmail(email);
+
+        const user = {
+          email: res?.user?.email,
+          login: "google",
+          role: "buyer account",
+        };
+
+        fetch("https://assignment-12-server-side-atikdev-bd.vercel.app/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            toast.success("Login successfully");
+          });
       })
       .catch((error) => {});
   };

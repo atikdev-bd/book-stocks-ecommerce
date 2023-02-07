@@ -79,6 +79,7 @@ const CheckoutForm = ({ booking }) => {
       const payment = {
         price: booking.price,
         email,
+        bookName,
         transactionId: paymentIntent.id,
         bookingId: booking._id,
       };

@@ -76,7 +76,25 @@ const Register = () => {
       .then((res) => {
         const email = res?.user?.email;
         setRegisterUserEmail(email);
-        toast.success("Login successfully");
+
+        const user = {
+          email: res?.user?.email,
+          login: "google",
+          role: "buyer account",
+        };
+        console.log(user);
+
+        fetch("https://assignment-12-server-side-atikdev-bd.vercel.app/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            toast.success("Login successfully");
+          });
       })
       .catch((error) => {});
   };
